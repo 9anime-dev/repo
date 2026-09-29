@@ -1,4 +1,4 @@
-# anime3rb.com — Miru extension repository
+# Arabic anime Miru extension repository
 
 A [Miru](https://github.com/miru-project/miru_app) extension repository that
 serves extensions over plain HTTPS with no authentication.
@@ -6,9 +6,10 @@ serves extensions over plain HTTPS with no authentication.
 ## Layout
 
 ```
-index.json          # extension index consumed by the Miru app
+index.json            # extension index consumed by the Miru app
 repo/
-  anime3rb.com.js   # the extension itself
+  anime3rb.com.js     # Anime3rb
+  animewitcher.com.js # AnimeWitcher
 ```
 
 Miru resolves an extension as `<MiruRepoUrl>/repo/<package>.js`, so the file
@@ -19,20 +20,31 @@ field in `index.json` is informational only and is ignored by the app.
 
 1. Open Miru → Settings → change **Extension repository** to this repo's raw
    root, e.g. `https://raw.githubusercontent.com/9anime-dev/repo/main`
-   (the `index.json` lives there, and `repo/anime3rb.com.js` sits next to it).
-2. Reload the extension list and install **Anime3rb**.
+   (the `index.json` lives there, and the `repo/*.js` files sit next to it).
+2. Reload the extension list and install the extension you want.
 
 Installing a single file directly also works:
 
 ```
 https://raw.githubusercontent.com/9anime-dev/repo/main/repo/anime3rb.com.js
+https://raw.githubusercontent.com/9anime-dev/repo/main/repo/animewitcher.com.js
 ```
 
 ## Extensions
 
-| Name | Package | Type | Lang | Version |
-| --- | --- | --- | --- | --- |
-| Anime3rb | `anime3rb.com` | bangumi | ar | v0.0.1 |
+| Name | Package | Type | Lang | Version | Site |
+| --- | --- | --- | --- | --- | --- |
+| Anime3rb | `anime3rb.com` | bangumi | ar | v0.0.1 | [anime3rb.com](https://anime3rb.com) |
+| AnimeWitcher | `animewitcher.com` | bangumi | ar | v0.0.1 | [animewitcher.com](https://animewitcher.com) |
+
+Both extensions implement `latest`, `search`, `detail` and `watch`, and both
+resolve their data without scraping an HTML page for the episode list.
+
+AnimeWitcher talks to the site's own Firestore + Algolia backend and reads the
+Algolia credentials from `Settings/constants` at run time, so a key rotation on
+the site does not break it. Playback prefers Pixeldrain, then MediaFire, then
+StreamFlare, and only hands the player a url that is structurally a direct media
+stream.
 
 ## Adding an extension
 
