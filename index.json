@@ -1,0 +1,15 @@
+[
+  {
+    "author": "9anime",
+    "description": "Anime3rb - arabic anime streaming site",
+    "icon": "https://anime3rb.com/favicon.ico",
+    "lang": "ar",
+    "license": "MIT",
+    "name": "Anime3rb",
+    "package": "anime3rb.com",
+    "type": "bangumi",
+    "url": "anime3rb.com.js",
+    "version": "v0.0.1",
+    "webSite": "https://anime3rb.com"
+  }
+]
